@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
+import 'package:open_filex/open_filex.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,7 +51,7 @@ class MyApp extends StatelessWidget {
               // Make the CircleAvatar container clickable
               GestureDetector(
                 onTap: () async {
-                  final Uri url = Uri.parse('https://www.google.com');
+                  final Uri url = Uri.parse('https://t.me/KhunMeas');
                   if (await canLaunchUrl(url)) {
                     await launchUrl(url);
                   } else {
@@ -123,7 +128,7 @@ class MyApp extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: TextButton(
                   onPressed: () async {
-                    final Uri url = Uri.parse('https://www.google.com');
+                    final Uri url = Uri.parse('https://t.me/KhunMeas');
                     if (await canLaunchUrl(url)) {
                       await launchUrl(url);
                     } else {
@@ -140,30 +145,30 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Download CV",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(width: 5),
-                      Image.asset(
-                        'assets/download.png',
-                        height: 20,
-                        width: 20,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
+              margin: EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                ),
+                onPressed: savePdfToDownloads,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Download CV",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(width: 5),
+                    Image.asset(
+                      'assets/download.png',
+                      height: 20,
+                      width: 20,
+                      color: Colors.white,
+                    ),
+                  ],
                 ),
               ),
+            ),
             ],
           ),
         ),
@@ -171,3 +176,43 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+ Future<void> savePdfToDownloads() async {
+    try {
+      // Request storage permissions (for Android 13+)
+      if (Platform.isAndroid) {
+        if (await Permission.manageExternalStorage.request().isDenied) {
+          print('Storage permission denied');
+          return;
+        }
+      }
+
+      // Get the Downloads directory
+      Directory? downloadsDir;
+      if (Platform.isAndroid) {
+        downloadsDir = Directory('/storage/emulated/0/Download');
+      } else {
+        downloadsDir = await getDownloadsDirectory();
+      }
+
+      if (downloadsDir == null) {
+        print('Downloads directory not found');
+        return;
+      }
+
+      // Define the file path in the Downloads directory
+      final filePath = '${downloadsDir.path}/Resume.pdf';
+
+      // Load the PDF from assets
+      final byteData = await rootBundle.load('assets/Resume.pdf');
+
+      // Write the PDF to the Downloads folder
+      final file = File(filePath);
+      await file.writeAsBytes(byteData.buffer.asUint8List());
+
+      print('✅ PDF saved to: $filePath');
+    } catch (e) {
+      print('❌ Error saving PDF: $e');
+    }
+  }
+
