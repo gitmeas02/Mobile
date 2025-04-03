@@ -20,7 +20,9 @@ class _LoginPageState extends State<LoginPage> {
           backgroundColor: Colors.white,
         ),
       ),
+      backgroundColor: Colors.white, // Set the body background color to white
       body: Column(
+        
         crossAxisAlignment: CrossAxisAlignment.start, // Aligns content to the start (top-left)
         children: [
           Container(
@@ -45,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
-          const SizedBox(height: 10), // Adds spacing between elements
+          const SizedBox(height: 45), // Adds spacing between elements
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
@@ -54,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: 'Email',
                 border: OutlineInputBorder(),
                 filled: true,
+                fillColor: Colors.white,
                 hintStyle: TextStyle(
                   color: Colors.black,
                 ),
@@ -64,13 +67,13 @@ class _LoginPageState extends State<LoginPage> {
                   borderSide: BorderSide(color: Color.fromARGB(255, 180, 218, 250), width: 2.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color.fromARGB(255, 229, 226, 226), width: 2.0),
+                  borderSide: BorderSide(color: Color.fromARGB(255, 216, 213, 213), width: 1.0),
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 12.5,horizontal: 10.0),
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
@@ -80,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: 'Password',
                 border: OutlineInputBorder(),
                 filled: true,
+                fillColor: Colors.white,
                 hintStyle: TextStyle(
                   color: Colors.black,
                 ),
@@ -90,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderSide: BorderSide(color: Color.fromARGB(255, 180, 218, 250), width: 2.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color.fromARGB(255, 229, 226, 226), width: 2.0),
+                  borderSide: BorderSide(color: Color.fromARGB(255, 216, 213, 213), width: 1.0),
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 12.5,horizontal: 10.0),
 
@@ -107,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
@@ -130,6 +135,7 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
@@ -150,7 +156,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
+          const SizedBox(height: 25),
           const Center(child: Text('OR')),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
@@ -171,8 +179,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          const SizedBox(height: 10),
-          Center(
+          const SizedBox(height: 70),
+          BottomAppBar(
+            color: Colors.white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

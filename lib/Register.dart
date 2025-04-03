@@ -14,10 +14,32 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      backgroundColor: Colors.white, // Set the body background color to white
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start, 
           children: [
-            const SizedBox(height: 10),
+             Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+              children: [
+                const Text(
+                'Register to your \naccount',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+                ),
+                const SizedBox(height: 10), // Adds spacing between elements
+                Image.asset(
+                'images/accent.png',
+                width: 120,
+                height: 14,
+                ),
+              ],
+              ),
+            ),
+          const SizedBox(height: 45),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
@@ -26,6 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'Email',
                   border: OutlineInputBorder(),
                 filled: true,
+                fillColor: Colors.white,
                 hintStyle: TextStyle(
                   color: Colors.black,
                 ),
@@ -36,21 +59,36 @@ class _RegisterPageState extends State<RegisterPage> {
                   borderSide: BorderSide(color: Color.fromARGB(255, 180, 218, 250), width: 2.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color.fromARGB(255, 229, 226, 226), width: 2.0),
+                  borderSide: BorderSide(color: Color.fromARGB(255, 216, 213, 213), width: 1.0),
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 12.5,horizontal: 10.0),
                 ),
               ),
             ),
-          const SizedBox(height: 10),
+            const SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
                 obscureText: _isObscured,
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  hintText: 'Password',
-                  border: const OutlineInputBorder(),
+                  hintText: 'Password',                
+                  border: OutlineInputBorder(),
+                filled: true,
+                fillColor: Colors.white,
+                hintStyle: TextStyle(
+                  color: Colors.black,
+                ),
+                labelStyle: TextStyle(
+                  color: Colors.black,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color.fromARGB(255, 180, 218, 250), width: 2.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color.fromARGB(255, 216, 213, 213), width: 1.0),
+                ),
+                contentPadding: EdgeInsets.symmetric(vertical: 12.5,horizontal: 10.0),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _isObscured ? Icons.visibility : Icons.visibility_off,
@@ -64,7 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
@@ -74,6 +112,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'Confirm Password',
                   border: OutlineInputBorder(),
                 filled: true,
+                fillColor: Colors.white,
                 hintStyle: TextStyle(
                   color: Colors.black,
                 ),
@@ -81,10 +120,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: Colors.black,
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color.fromARGB(255, 180, 218, 250), width: 2.0),
+                  borderSide: BorderSide(color: Color.fromARGB(255, 180, 218, 250), width: 1.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color.fromARGB(255, 229, 226, 226), width: 2.0),
+                  borderSide: BorderSide(color: Color.fromARGB(255, 216, 213, 213), width: 1.0),
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 12.5,horizontal: 10.0),
                   suffixIcon: IconButton(
@@ -100,6 +139,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
+                  const SizedBox(height: 25),
             Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -113,6 +153,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                   activeColor: Colors.blue,
                 ),
+                
                 Container(
                   margin: const EdgeInsets.only(left: 5),
                   child: Column(
@@ -144,7 +185,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ],
             ),
-          ),
+          ), // Set the body background color to white
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SizedBox(
@@ -165,8 +207,9 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
           ),
-          const SizedBox(height: 10),
-           Center(
+          const SizedBox(height: 70),
+           BottomAppBar(
+            color: Colors.white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
