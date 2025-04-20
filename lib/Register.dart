@@ -16,7 +16,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(),
       backgroundColor: Colors.white, // Set the body background color to white
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, 
+        crossAxisAlignment: CrossAxisAlignment.start,
           children: [
              Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
