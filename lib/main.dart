@@ -38,18 +38,17 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(0),
-          child: AppBar(
-            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-          ),
-        ),
-        body: Column(
-          children: [
-            const Header(title: "This is me"),
-            Expanded(child: pages[selectedIndex]),
-          ],
-        ),
+        // appBar: const Header(title: "This is me"),
+      //   appBar: AppBar(
+      //   backgroundColor: Colors.green,
+      //   foregroundColor: Colors.white,
+      // ),
+         body: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          pages[selectedIndex],
+        ],
+      ),
         bottomNavigationBar: BottomAppBar(
           color: Colors.black,
           child: Padding(

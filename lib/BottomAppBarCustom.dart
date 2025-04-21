@@ -4,7 +4,7 @@ class BottomAppBarCustom extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onTabSelected;
 
-  BottomAppBarCustom({
+  BottomAppBarCustom({super.key, 
     required this.selectedIndex,
     required this.onTabSelected,
   });

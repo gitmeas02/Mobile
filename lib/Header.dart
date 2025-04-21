@@ -1,40 +1,65 @@
 import 'package:flutter/material.dart';
 
-class Header extends StatelessWidget {
+class Header extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final TextStyle? textStyle;
 
   const Header({
-    Key? key,
+    super.key,
     required this.title,
     this.textStyle,
-  }) : super(key: key);
+  });
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _HeaderState createState() => _HeaderState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _HeaderState extends State<Header> {
+  bool isClearAll = true;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 44,
-      padding: const EdgeInsets.symmetric(horizontal: 18.0),
       color: const Color(0xFF6941C6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Icon(Icons.menu, color: Colors.white), // Menu icon on the left
-          Expanded(
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: textStyle ??
-                  const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-          ), // Centered text
-          Icon(Icons.add, color: Colors.white), // "+" sign on the right
-        ],
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: SafeArea(
+        bottom: false,
+        child: SizedBox(
+          height: kToolbarHeight,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isClearAll = !isClearAll;
+                  });
+                },
+                child: Icon(
+                  isClearAll ? Icons.clear_all_rounded : Icons.clear_sharp,
+                  color: Colors.white,
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  widget.title,
+                  textAlign: TextAlign.center,
+                  style: widget.textStyle ??
+                      const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
+              const Icon(Icons.add, color: Colors.white),
+            ],
+          ),
+        ),
       ),
     );
   }
