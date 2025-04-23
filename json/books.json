@@ -1,0 +1,58 @@
+[
+    {
+        "rating": "4.5",
+        "title": "THE GREAT GATSBY",
+        "text": "F. Scott Fitzgerald",
+        "img": "images/pic1.png",
+        "audio": "TheGreatGatsby.mp3"
+    },
+    {
+        "rating": "4.7",
+        "title": "TO KILL A MOCKINGBIRD",
+        "text": "Harper Lee",
+        "img": "images/pic2.png",
+        "audio": "ToKillAMockingbird.mp3"
+    },
+    {
+        "rating": "4.8",
+        "title": "1984",
+        "text": "George Orwell",
+        "img": "images/pic3.png",
+        "audio": "1984.mp3"
+    },
+    {
+        "rating": "4.6",
+        "title": "THE CATCHER IN THE RYE",
+        "text": "J.D. Salinger",
+        "img": "images/pic4.png",
+        "audio": "TheCatcherInTheRye.mp3"
+    },
+    {
+        "rating": "4.9",
+        "title": "PRIDE AND PREJUDICE",
+        "text": "Jane Austen",
+        "img": "images/pic5.png",
+        "audio": "PrideAndPrejudice.mp3"
+    },
+    {
+        "rating": "4.4",
+        "title": "THE LORD OF THE RINGS",
+        "text": "J.R.R. Tolkien",
+        "img": "images/pic6.png",
+        "audio": "TheLordOfTheRings.mp3"
+    },
+    {
+        "rating": "4.3",
+        "title": "THE HOBBIT",
+        "text": "J.R.R. Tolkien",
+        "img": "images/pic7.png",
+        "audio": "TheHobbit.mp3"
+    },
+    {
+        "rating": "4.5",
+        "title": "THE BOOK THIEF",
+        "text": "Markus Zusak",
+        "img": "images/pic8.png",
+        "audio": "TheBookThief.mp3"
+    }
+]

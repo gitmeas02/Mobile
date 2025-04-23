@@ -1,0 +1,44 @@
+[
+{
+    "rating": "4.5",
+    "title": "THE WATER CURE",
+    "text": "Martin Ha",
+    "img": "images/pic1.png",
+    "audio": "Voices.mp3"
+},
+{
+    "rating": "4.8",
+    "title": "THE NIGHT WATCHMAN",
+    "text": "Louise Erdrich",
+    "img": "images/pic3.png",
+    "audio": "NightVoices.mp3"
+},
+{
+    "rating": "4.7",
+    "title": "WHERE THE CRAWDADS SING",
+    "text": "Delia Owens",
+    "img": "images/pic4.png",
+    "audio": "Crawdads.mp3"
+},
+{
+    "rating": "4.6",
+    "title": "THE GIVER OF STARS",
+    "text": "Jojo Moyes",
+    "img": "images/pic5.png",
+    "audio": "Stars.mp3"
+},
+{
+    "rating": "4.9",
+    "title": "BECOMING",
+    "text": "Michelle Obama",
+    "img": "images/pic5.png",
+    "audio": "Becoming.mp3"
+},
+{
+    "rating": "4.4",
+    "title": "EDUCATED",
+    "text": "Tara Westover",
+    "img": "images/pic3.png",
+    "audio": "Educated.mp3"
+}
+]
