@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:login/pages/audio_music.dart';
 
 import '../audio/app_colors.dart' as AppColors;
 
@@ -13,6 +14,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   List popularBooks = [];
+  List books=[];
   late ScrollController _scrollController;
   late TabController _tabController;
   int selectedIndex = 0;
@@ -26,6 +28,15 @@ class _MyHomePageState extends State<MyHomePage>
       });
     });
   }
+  readData2() async {
+    await DefaultAssetBundle.of(
+      context,
+    ).loadString("json/books.json").then((s){
+      setState((){
+        books = json.decode(s);
+      });
+    });
+  }
 
   @override
   void initState() {
@@ -33,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage>
     _tabController = TabController(length: tabsLabel.length, vsync: this);
     _scrollController = ScrollController();
     readData();
-
+    readData2();
     _tabController.addListener(() {
       if (_tabController.indexIsChanging == false) {
         setState(() {
@@ -42,11 +53,13 @@ class _MyHomePageState extends State<MyHomePage>
       }
     });
   }
- @override
+
+  @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -205,9 +218,20 @@ class _MyHomePageState extends State<MyHomePage>
                     children: [
                       ListView.builder(
                         itemCount:
-                            popularBooks == null ? 0 : popularBooks.length,
+                            books == null ? 0 : books.length,
                         itemBuilder: (_, i) {
-                          return Container(
+                          return GestureDetector(
+                            onTap:(){
+                              Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => Music(
+                                  book: books[i],  // Pass the selected book
+                                ),
+                              ),
+                            );
+                            } ,
+                            child:Container(
                             margin: const EdgeInsets.only(
                               left: 20,
                               right: 20,
@@ -236,86 +260,94 @@ class _MyHomePageState extends State<MyHomePage>
                                         borderRadius: BorderRadius.circular(10),
                                         image: DecorationImage(
                                           image: AssetImage(
-                                            popularBooks[i]["img"],
+                                            books[i]["img"],
                                           ),
                                           fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
                                     SizedBox(width: 10),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.star,
-                                              color:
-                                                  AppColors.AppColors.starColor,
-                                            ),
-                                            SizedBox(width: 5),
-                                            Text(
-                                              popularBooks[i]["rating"],
-                                              style: TextStyle(
+                                    Expanded(
+                                      
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.star,
                                                 color:
                                                     AppColors
                                                         .AppColors
                                                         .starColor,
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          popularBooks[i]["title"],
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontFamily: "Avenir",
-                                            fontWeight: FontWeight.bold,
+                                              SizedBox(width: 5),
+                                              Text(
+                                                books[i]["rating"],
+                                                style: TextStyle(
+                                                  color:
+                                                      AppColors
+                                                          .AppColors
+                                                          .starColor,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                        Text(
-                                          popularBooks[i]["text"],
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontFamily: "Avenir",
-                                            fontWeight: FontWeight.bold,
-                                            color:
-                                                AppColors
-                                                    .AppColors
-                                                    .subTitleText,
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 50,
-                                          height: 30,
-                                          margin: const EdgeInsets.only(
-                                            top: 10,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color:
-                                                AppColors.AppColors.menu3Color,
-                                            borderRadius: BorderRadius.circular(
-                                              4,
-                                            ),
-                                          ),
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "Love",
+                                          Text(
+                                            books[i]["title"],
                                             style: TextStyle(
-                                              fontSize: 12,
+                                              overflow: TextOverflow.ellipsis,
+                                              fontSize: 16,
                                               fontFamily: "Avenir",
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.white,
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Text(
+                                            books[i]["text"],
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontFamily: "Avenir",
+                                              fontWeight: FontWeight.bold,
+                                              color:
+                                                  AppColors
+                                                      .AppColors
+                                                      .subTitleText,
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 50,
+                                            height: 30,
+                                            margin: const EdgeInsets.only(
+                                              top: 10,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  AppColors
+                                                      .AppColors
+                                                      .menu3Color,
+                                              borderRadius:
+                                                  BorderRadius.circular(4),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "Love",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: "Avenir",
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
+                          ),
                           );
                         },
                       ),
