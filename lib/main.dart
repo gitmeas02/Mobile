@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'pages/my_home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +15,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title:'Audio Player',
+      title:'Blog App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.blue,
-      ),
-      home: MyHomePage(),
+      theme:
+      home: const MyHomePage(title:'Flutter'),
     );
   }
 }
