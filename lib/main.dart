@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/features/auth/presentation/page/signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +18,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title:'Blog App',
       debugShowCheckedModeBanner: false,
-      theme:
-      home: const MyHomePage(title:'Flutter'),
+      home: const SignupPage()
     );
   }
 }
