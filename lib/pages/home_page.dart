@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tp4_flutter/theme/colors.dart';
 import 'package:tp4_flutter/widgets/avatar.dart';
 import 'package:tp4_flutter/widgets/button_widget.dart';
+import 'package:tp4_flutter/widgets/category_widget.dart';
 import 'package:tp4_flutter/widgets/header_widget.dart';
 import 'package:tp4_flutter/widgets/quote_text.dart';
 import 'package:tp4_flutter/widgets/small_description.dart';
+import 'package:tp4_flutter/widgets/tab_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,51 +22,81 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           HeaderWidget(),
-          Expanded(
+            Expanded(
             child: ListView(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 43.0),
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    // crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                    SizedBox(width: 48),
-                     // Custom widget for the quote text
-                    QuoteText(),
-                    SizedBox(height: 22),
-                    ],
-                  ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 43.0),
+                child: Column(
+                children: [
+                  SizedBox(width: 48),
+                  QuoteText(),
+                  SizedBox(height: 22),
+                ],
                 ),
-               // small decription
+              ),
               SmallDescriptionWidget(),
               SizedBox(height: 21),
-              // Avatar widget
               Avatar(),
-              // button 2
               Align(
                 alignment: Alignment.center,
                 child: ButtonWidget(
-                  text: 'Explore Courses',
-                  icon: ImageIcon(AssetImage('assets/icons/book.png'), color: AppColors.iconColor, size: 24),
-                  colorButton: 'buttonColor1',
-                  textColor: AppColors.iconColor.value.toString(),
+                text: 'Explore Courses',
+                icon: ImageIcon(AssetImage('assets/icons/book.png'), color: AppColors.iconColor, size: 24),
+                colorButton: 'buttonColor1',
+                textColor: AppColors.iconColor.value.toString(),
                 ),
               ),
               SizedBox(height: 12),
-              // button 3
               Align(
                 alignment: Alignment.center,
                 child: ButtonWidget(
-                  text: 'Join as an educator',
-                  icon: ImageIcon(AssetImage('assets/icons/learning.png'), color: AppColors.backgroundColor, size: 24),
-                  colorButton: 'buttonColor2',
-                  textColor: AppColors.backgroundColor.value.toString(),
+                text: 'Join as an educator',
+                icon: ImageIcon(AssetImage('assets/icons/learning.png'), color: AppColors.backgroundColor, size: 24),
+                colorButton: 'buttonColor2',
+                textColor: AppColors.backgroundColor.value.toString(),
                 ),
-              ),  
+              ),
+              SizedBox(height: 22),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                  CategoryWidget(),
+                  SizedBox(width: 9),
+                  CategoryWidget(),
+                  SizedBox(width: 9),
+                  CategoryWidget(),
+                  SizedBox(width: 9),
+                  CategoryWidget(),
+                  SizedBox(width: 9),
+                  CategoryWidget(),
+                  SizedBox(width: 9),
+                  CategoryWidget(),
+                  ],
+                ),
+                ),
+              ),
+              SizedBox(height: 22),
+              Padding(
+                padding: const EdgeInsets.only(left: 18),
+                child: Text(
+                'Featured Courses',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  fontFamily: 'Ubuntu',
+                ),
+                ),
+              ),
+              SizedBox(height: 12),
+                TabBarWidget()
               ],
             ),
-          ),
+            ),
            
         ],
       ),
