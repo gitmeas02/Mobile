@@ -205,7 +205,7 @@ class _TabBarWidgetState extends State<TabBarWidget> with SingleTickerProviderSt
         ),
         Container(
           constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.64, // Optional: cap max height
+            maxHeight: MediaQuery.of(context).size.height * 0.6, // Optional: cap max height
           ),
           child: TabBarView(
             dragStartBehavior: DragStartBehavior.start,
